@@ -12,4 +12,7 @@ public interface OrderService {
     void updateOrder(Order order);
     //删除
     void deleteOrderById(Integer id);
+
+    //Qrcode 查询order
+    Order findOrderByQrcode(Integer customId, Integer userItemId);
 }

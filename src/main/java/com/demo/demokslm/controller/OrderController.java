@@ -35,4 +35,9 @@ public class OrderController {
         orderService.deleteOrderById(id);
         return "Success";
     }
+
+    @GetMapping(value = "/{userId}/{itemId}")
+    public Order findOrderByQrcode(@PathVariable Integer userId,@PathVariable Integer itemId){
+        return orderService.findOrderByQrcode(userId, itemId);
+    }
 }

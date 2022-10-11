@@ -1,5 +1,6 @@
 package com.demo.demokslm.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.demo.demokslm.dao.OrderDao;
 import com.demo.demokslm.pojo.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,14 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void deleteOrderById(Integer id) {
         orderDao.deleteById(id);
+    }
+
+    @Override
+    public Order findOrderByQrcode(Integer customId, Integer userItemId) {
+        return orderDao.selectOne(new QueryWrapper<Order>()
+                .like("customId",customId)
+                .like("orderItemId",userItemId)
+                .like("orderStatus",1)
+        );
     }
 }
