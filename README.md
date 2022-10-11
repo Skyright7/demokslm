@@ -43,3 +43,6 @@ create table orders(
     primary key(orderId)
 )
 ```
+
+
+有一个重要的点：想办法限制一下，order中具有相同customId、orderItemId跟orderStatus的只能有一个量
