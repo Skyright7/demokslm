@@ -29,7 +29,7 @@ create table seat(
     seatType int not null,
     seatOccupancy int not null default 1,
     seatPosition varchar(32) not null,
-    seatAvalableTime varchar(255) not null,
+    seatAvailableTime varchar(255) not null,
     primary key(seatId)
 )
 ```

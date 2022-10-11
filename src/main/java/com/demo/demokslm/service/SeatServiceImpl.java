@@ -10,7 +10,6 @@ public class SeatServiceImpl implements SeatService{
 
     @Autowired
     private SeatDao seatDao;
-
     @Override
     public Seat findSeatById(Integer id) {
         return seatDao.selectById(id);
