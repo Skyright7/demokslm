@@ -35,7 +35,7 @@ public class User {
 
     @NotNull
     @TableField("userPrivilege")
-    private int userPrivilege;
+    private int userPrivilege; //这个要去掉，最后加进token里
 
     @TableField("userPreferredName")
     private String userPreferredName;
@@ -65,5 +65,5 @@ public class User {
 
     @NotNull
     @TableField("userStatus")
-    private int userStatus;
+    private int userStatus; //这个也不要了，用token来做
 }
