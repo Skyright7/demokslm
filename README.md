@@ -46,3 +46,6 @@ create table orders(
 
 
 有一个重要的点：想办法限制一下，order中具有相同customId、orderItemId跟orderStatus的只能有一个量
+
+
+登录还是自己做吧：需要加一个token的表，user的表还需要进行一定的改动
