@@ -54,3 +54,5 @@ create table orders(
 user表中的密码做一下加密。
 
 token库： id（自生成）（big int） userId（big int） buildTime（int 11） token（string）
+
+准备开发一下前端部分
