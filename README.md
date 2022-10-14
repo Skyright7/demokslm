@@ -56,3 +56,14 @@ user表中的密码做一下加密。
 token库： id（自生成）（big int） userId（big int） buildTime（int 11） token（string）
 
 准备开发一下前端部分
+
+```sql
+create table if not exists token(
+    id int not null auto_increment,
+    userId int not null,
+    buildTime int(11) not null ,
+    token varchar(300) not null,
+    primary key(id)
+)
+```
+Token的数据表
