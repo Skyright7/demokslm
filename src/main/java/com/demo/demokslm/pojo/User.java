@@ -24,7 +24,7 @@ public class User {
 
     @NotNull
     @TableField("userpassword")
-    private String userPassword;
+    private String userPassword; //md5编码之后再存入数据库
 
     @NotNull
     @TableField("userName")
@@ -35,7 +35,7 @@ public class User {
 
     @NotNull
     @TableField("userPrivilege")
-    private int userPrivilege;
+    private int userPrivilege; //包含在token中
 
     @TableField("userPreferredName")
     private String userPreferredName;
@@ -65,5 +65,5 @@ public class User {
 
     @NotNull
     @TableField("userStatus")
-    private int userStatus;
+    private int userStatus; //这个不需要了，用户状态交由token的exp来判断;
 }

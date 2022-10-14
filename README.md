@@ -45,7 +45,14 @@ create table orders(
 ```
 
 
-有一个重要的点：想办法限制一下，order中具有相同customId、orderItemId跟orderStatus的只能有一个量
+有一个重要的点：想办法限制一下，order中具有相同customId、orderItemId跟orderStatus的只能有一个量。
 
+简化一下数据库的命名。稍微修改一下数据库的数据类型。
 
-登录还是自己做吧：需要加一个token的表，user的表还需要进行一定的改动
+登录还是自己做吧：需要加一个token的表，user的表还需要进行一定的改动（预计使用jjwt来做）。
+
+user表中的密码做一下加密。
+
+token库： id（自生成）（big int） userId（big int） buildTime（int 11） token（string）
+
+准备开发一下前端部分
