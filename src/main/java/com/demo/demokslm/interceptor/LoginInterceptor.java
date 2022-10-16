@@ -5,13 +5,18 @@ import com.demo.demokslm.dao.TokenDao;
 import com.demo.demokslm.pojo.Token;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
+import java.security.Key;
 import java.util.Date;
 
 /**
@@ -24,6 +29,15 @@ public class LoginInterceptor implements HandlerInterceptor {
     private TokenDao tokenDao;
 
     //有default感觉不用配置after什么的
+    private Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+    @Override
+    public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2,@Nullable Exception arg3)
+            throws Exception {}
+
+    @Override
+    public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, @Nullable ModelAndView modelAndView)
+            throws Exception {}
 
     @Override
     public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2)
@@ -43,7 +57,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
 
         try {
-            Claims claims = Jwts.parser().setSigningKey("preRead").parseClaimsJws(headerToken).getBody();
+            //这里有问题 io.jsonwebtoken.security.SignatureException: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+            Claims claims = (Claims) Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(headerToken);
             String tokenUserId = (String) claims.get("userId");
             int iTokenUserId = Integer.parseInt(tokenUserId);
 
@@ -75,6 +90,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return false;
             }
         } catch (Exception e){
+            System.out.println(e);
             resultWriter.write("总之token不正确，请重新登陆".getBytes(StandardCharsets.UTF_8));
             resultWriter.flush();
             resultWriter.close();

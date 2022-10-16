@@ -8,6 +8,6 @@ import com.demo.demokslm.pojo.LoginForm;
  * @date 2022/10/15 22:06
  */
 public interface LoginService {
-    Object loginToGetToken(LoginForm loginForm);
+    String loginToGetToken(LoginForm loginForm);
 }
 

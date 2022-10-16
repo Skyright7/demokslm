@@ -1,6 +1,7 @@
 package com.demo.demokslm.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.demo.demokslm.pojo.Token;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,5 +10,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2022/10/13 22:27
  */
 @Mapper
-public interface TokenDao extends BaseMapper {
+public interface TokenDao extends BaseMapper<Token> {
 }
