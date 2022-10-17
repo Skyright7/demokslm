@@ -9,11 +9,10 @@ import com.demo.demokslm.pojo.User;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.io.Decoders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.Key;
 import java.util.Date;
 
 
@@ -30,6 +29,11 @@ public class LoginServiceImpl implements LoginService{
     @Autowired
     private UserDao userDao;
 
+    //public static Key keys =  Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+    //public static String secretString = Encoders.BASE64.encode(keys.getEncoded());
+
+    private String secret = "Zpu3wJwXV4VQWrHcXV3ggzmjao8ni1QejZ6LJImJV/k=";
 
     @Override
     public String loginToGetToken(LoginForm loginForm) {
@@ -81,14 +85,12 @@ public class LoginServiceImpl implements LoginService{
     }
 
     private String tokenGenerator(int userId, Date date){
-        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-        Key key = Keys.secretKeyFor(signatureAlgorithm);
         JwtBuilder jwtBuilder = Jwts.builder().setHeaderParam("typ","JWT")
                 .setHeaderParam("alg","HS256").setIssuedAt(date)
                 .setExpiration(new Date(date.getTime() + 1000*60*60))
                 .claim("userId",String.valueOf(userId))
                 .setIssuer("Rain")    // 设置签发人
-                .signWith(key); //签名
+                .signWith(SignatureAlgorithm.HS256,secret); //签名
         String jwtoken = jwtBuilder.compact();
         return jwtoken;
     }

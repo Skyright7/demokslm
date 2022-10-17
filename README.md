@@ -67,3 +67,12 @@ create table if not exists token(
 )
 ```
 Token的数据表
+
+
+
+{
+"userCaseId":"gxl405",
+"userPassword":"123"
+}
+
+Zpu3wJwXV4VQWrHcXV3ggzmjao8ni1QejZ6LJImJV/k=
