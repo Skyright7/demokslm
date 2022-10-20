@@ -45,10 +45,9 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2)
             throws Exception {
-        if(arg0.getRequestURI().contains("/login") || arg0.getRequestURI().contains("/register") || arg0.getRequestURI().contains("/error") || arg0.getRequestURI().contains("/static")){
+        if(arg0.getRequestURI().contains("/login") || arg0.getRequestURI().contains("/register") || arg0.getRequestURI().contains("/error")){
             return true;
         }
-
         arg1.setContentType("text/html;charset=utf-8");
         ServletOutputStream resultWriter = arg1.getOutputStream();
         final String headerToken = arg0.getHeader("token");

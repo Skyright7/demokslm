@@ -76,3 +76,6 @@ Token的数据表
 }
 
 Zpu3wJwXV4VQWrHcXV3ggzmjao8ni1QejZ6LJImJV/k=
+
+做一下返回接口的封装，然后通过状态码做一下controller返回的异常处理
+做一下标准的参数校验（注解方式 starter validation）
