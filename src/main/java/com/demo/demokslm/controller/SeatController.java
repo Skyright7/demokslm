@@ -1,5 +1,6 @@
 package com.demo.demokslm.controller;
 
+import com.demo.demokslm.pojo.ResponseResult;
 import com.demo.demokslm.pojo.Seat;
 import com.demo.demokslm.service.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +14,27 @@ public class SeatController {
 
     //get seat by id
     @GetMapping(value = "/{id}")
-    public Seat findSeat(@PathVariable Integer id){
+    public ResponseResult<Seat> findSeat(@PathVariable Integer id){
         Seat seat = seatService.findSeatById(id);
-        return seat;
+        return ResponseResult.success(seat);
     }
 
     @PostMapping
-    public String addSeat(@RequestBody Seat seat){
+    public ResponseResult<String> addSeat(@RequestBody Seat seat){
         seatService.addSeat(seat);
-        return "Success";
+        return ResponseResult.success("Successful add one seat");
     }
 
     @PutMapping
-    public String adjustSeat(@RequestBody Seat seat){
+    public ResponseResult<String> adjustSeat(@RequestBody Seat seat){
         seatService.updateSeat(seat);
-        return "Success";
+        return ResponseResult.success("Successful adjust one seat");
     }
 
     @DeleteMapping(value = "/{id}")
-    public String deleteSeatById(@PathVariable Integer id){
+    public ResponseResult<String> deleteSeatById(@PathVariable Integer id){
         seatService.deleteSeatById(id);
-        return "Success";
+        return ResponseResult.success("Successful delete one seat");
     }
 
 }

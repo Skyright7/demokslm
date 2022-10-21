@@ -1,5 +1,6 @@
 package com.demo.demokslm.controller;
 
+import com.demo.demokslm.pojo.ResponseResult;
 import com.demo.demokslm.service.BusyCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ public class BusyCheckController {
     private BusyCheckService busyCheckService;
 
     @GetMapping
-    public Integer checkBusy(){
-        return busyCheckService.checkBusyStatement();
+    public ResponseResult<Integer> checkBusy(){
+        return ResponseResult.success(busyCheckService.checkBusyStatement());
     }
 }

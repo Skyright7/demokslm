@@ -1,6 +1,7 @@
 package com.demo.demokslm.controller;
 
 import com.demo.demokslm.pojo.Order;
+import com.demo.demokslm.pojo.ResponseResult;
 import com.demo.demokslm.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,31 +14,31 @@ public class OrderController {
 
     //get order by id
     @GetMapping(value = "/{id}")
-    public Order findOrder(@PathVariable Integer id){
+    public ResponseResult<Order> findOrder(@PathVariable Integer id){
         Order order = orderService.findOrderById(id);
-        return order;
+        return ResponseResult.success(order);
     }
 
     @PostMapping
-    public String addOrder(@RequestBody Order order){
+    public ResponseResult<String> addOrder(@RequestBody Order order){
         orderService.addOrder(order);
-        return "Success";
+        return ResponseResult.success("Successful add one order");
     }
 
     @PutMapping
-    public String adjustOrder(@RequestBody Order order){
+    public ResponseResult<String> adjustOrder(@RequestBody Order order){
         orderService.updateOrder(order);
-        return "Success";
+        return ResponseResult.success("Successful adjust one order");
     }
 
     @DeleteMapping(value = "/{id}")
-    public String deleteOrderById(@PathVariable Integer id){
+    public ResponseResult<String> deleteOrderById(@PathVariable Integer id){
         orderService.deleteOrderById(id);
-        return "Success";
+        return ResponseResult.success("Successful delete one order");
     }
 
     @GetMapping(value = "/{userId}/{itemId}")
-    public Order findOrderByQrcode(@PathVariable Integer userId,@PathVariable Integer itemId){
-        return orderService.findOrderByQrcode(userId, itemId);
+    public ResponseResult<Order> findOrderByQrcode(@PathVariable Integer userId,@PathVariable Integer itemId){
+        return ResponseResult.success(orderService.findOrderByQrcode(userId, itemId));
     }
 }

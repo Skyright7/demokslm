@@ -20,12 +20,12 @@ public class Knife4jConfiguration {
                 .apiInfo(new ApiInfoBuilder()
                         //描述字段支持Markdown语法
                         .description("# Knife4j RESTful APIs")
-                        .termsOfServiceUrl("https://doc.xiaominfo.com/")
-                        .contact("xiaoymin@foxmail.com")
+                        .termsOfServiceUrl("https://doc.KSLMobile.com/")
+                        .contact("gxl405@case.edu")
                         .version("1.0")
                         .build())
                 //分组名称
-                .groupName("用户服务")
+                .groupName("userService")
                 .select()
                 //这里指定Controller扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("com.demo.demokslm.controller"))

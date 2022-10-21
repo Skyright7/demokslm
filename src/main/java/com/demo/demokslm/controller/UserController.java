@@ -1,5 +1,6 @@
 package com.demo.demokslm.controller;
 
+import com.demo.demokslm.pojo.ResponseResult;
 import com.demo.demokslm.pojo.User;
 import com.demo.demokslm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,28 +14,27 @@ public class UserController {
     private UserService userService;
     //get user by id
     @GetMapping(value = "/{id}")
-    public User findUser(@PathVariable Integer id){
+    public ResponseResult<User> findUser(@PathVariable Integer id){
         User user = userService.findUserById(id);
-        //System.out.println(user);
-        return user;
+        return ResponseResult.success(user);
     }
 
     @PostMapping
-    public String addUser(@RequestBody User user){
+    public ResponseResult<String> addUser(@RequestBody User user){
         userService.addUser(user);
-        return "Success";
+        return ResponseResult.success("Successful add one User");
     }
 
     @PutMapping
-    public String adjustUser(@RequestBody User user){
+    public ResponseResult<String> adjustUser(@RequestBody User user){
         userService.updateUser(user);
-        return "Success";
+        return ResponseResult.success("Successful adjust one User");
     }
 
     @DeleteMapping(value = "/{id}")
-    public String deleteUserById(@PathVariable Integer id){
+    public ResponseResult<String> deleteUserById(@PathVariable Integer id){
         userService.deleteUserById(id);
-        return "Success";
+        return ResponseResult.success("Successful delete one User");
     }
 
 }

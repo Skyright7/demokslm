@@ -1,6 +1,7 @@
 package com.demo.demokslm.controller;
 
 import com.demo.demokslm.pojo.LoginForm;
+import com.demo.demokslm.pojo.ResponseResult;
 import com.demo.demokslm.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class LoginController {
     private LoginService loginService;
 
     @GetMapping
-    public Object login(@RequestBody LoginForm loginForm){
-        return loginService.loginToGetToken(loginForm);
+    public ResponseResult<String> login(@RequestBody LoginForm loginForm){
+        return ResponseResult.success(loginService.loginToGetToken(loginForm));
     }
 }
