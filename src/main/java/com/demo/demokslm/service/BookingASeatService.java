@@ -2,6 +2,7 @@ package com.demo.demokslm.service;
 
 import com.demo.demokslm.pojo.Seat;
 import com.demo.demokslm.pojo.StepOneBookingForm;
+import com.demo.demokslm.pojo.StepThreeBookingForm;
 
 import java.util.List;
 import java.util.Map;
@@ -13,4 +14,8 @@ import java.util.Map;
  */
 public interface BookingASeatService {
     List<Seat> StepOneResult(StepOneBookingForm stepOneBookingForm);
+
+    Seat StepTwoResult(Integer id);
+
+    Integer StepThreeResult(StepThreeBookingForm stepThreeBookingForm);
 }
