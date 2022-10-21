@@ -22,7 +22,7 @@ public class BookingASeatServiceTest {
         StepOneBookingForm stepOneBookingForm = new StepOneBookingForm();
         stepOneBookingForm.setPreferredArea("d5");
         stepOneBookingForm.setPreferredFloor("f3");
-        stepOneBookingForm.setArrivingTime(11);
+        stepOneBookingForm.setArrivingTime(10);
         List<Seat> seatList = bookingASeatService.StepOneResult(stepOneBookingForm);
         Seat seat = seatList.get(0);
         assert(seat.getSeatType() == 1);
@@ -30,5 +30,7 @@ public class BookingASeatServiceTest {
         assert(seat.getSeatOccupancy() == 1);
         assert(seat.getSeatPosition().equals("f3-d5"));
         assert(seat.getSeatAvailableTime().equals("9-23"));
+        Seat seat1 = seatList.get(1);
+        assert(seat1.getSeatId() == 6);
     }
 }

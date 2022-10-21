@@ -42,7 +42,7 @@ public class BookingASeatServiceImpl implements BookingASeatService{
                 startTime.add(Integer.parseInt(s1));
                 endTime.add(Integer.parseInt(s2));
                 for (int i = 0; i < startTime.size(); i++) {
-                    if(startTime.get(i)<=userArriveTime && userArriveTime<=endTime.get(i)){
+                    if(startTime.get(i)<=userArriveTime && userArriveTime<endTime.get(i)){
                         avaList.add(s);
                     }
                 }
