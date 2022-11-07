@@ -17,9 +17,10 @@ public class BusyCheckServiceTest {
 
     @Autowired BusyCheckService busyCheckService;
 
-//    @Test
-//    void contextLoads() {
-//        int res =busyCheckService.checkBusyStatement();
-//        assert(res==80);
-//    }
+    @Test
+    void contextLoads() {
+        int res = -1;
+        res =busyCheckService.checkBusyStatement().get("busyStatement");
+        assert(res!=-1);
+    }
 }

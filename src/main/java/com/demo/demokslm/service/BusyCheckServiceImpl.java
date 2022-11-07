@@ -24,7 +24,7 @@ public class BusyCheckServiceImpl implements BusyCheckService {
         long all = seatDao.selectCount(new QueryWrapper<Seat>());
         double result = ((double)res/(double)all * 100);
         Map<String,Integer> busy = new HashMap<>();
-        busy.put("busyStatment",(int)result);
+        busy.put("busyStatement",(int)result);
         return busy;
     }
 }

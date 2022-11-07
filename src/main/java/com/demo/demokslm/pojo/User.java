@@ -25,7 +25,7 @@ public class User {
 
     @NotNull
     @TableField("userpassword")
-    private String userPassword; //md5编码之后再存入数据库
+    private String userPassword; //后续改为md5编码之后再存入数据库
 
     @NotNull
     @TableField("userName")
@@ -59,7 +59,7 @@ public class User {
     private String userMajor;
 
     @TableField("userAvatar")
-    private int userAvatar;
+    private int userAvatar; //暂时先不改名字吧，先用这里存头像的id
 
     @TableField("userTitle")
     private String userTitle;
