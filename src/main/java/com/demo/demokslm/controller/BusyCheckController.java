@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/busyCheck")
 public class BusyCheckController {
@@ -14,7 +17,7 @@ public class BusyCheckController {
     private BusyCheckService busyCheckService;
 
     @GetMapping
-    public ResponseResult<Integer> checkBusy(){
+    public ResponseResult<Map<String,Integer>> checkBusy(){
         return ResponseResult.success(busyCheckService.checkBusyStatement());
     }
 }
