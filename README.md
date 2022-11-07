@@ -79,3 +79,40 @@ Zpu3wJwXV4VQWrHcXV3ggzmjao8ni1QejZ6LJImJV/k=
 
 做一下返回接口的封装，然后通过状态码做一下controller返回的异常处理
 做一下标准的参数校验（注解方式 starter validation）
+
+```sql
+create table if not exists swiper(
+        swiperId int not null auto_increment,
+        imageId int not null,
+        primary key(swiperId)
+)
+```
+swiper的表
+
+```sql
+create table message(
+        messageId int not null auto_increment,
+        imageId int not null,
+        receiverId int not null,
+        header varchar(32) not null,
+        sender varchar(32) not null,
+        snapshots varchar(32) not null,
+        times varchar(32) not null,
+        detail varchar(255) not null,
+        primary key(messageId)
+)
+```
+message的表
+
+```sql
+create table event(
+        eventId int not null auto_increment,
+        imageId int not null,
+        header varchar(32) not null,
+        snapshots varchar(32) not null,
+        times varchar(32) not null,
+        detail varchar(255) not null,
+        primary key(eventId)
+)
+```
+event的表
