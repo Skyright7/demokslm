@@ -14,6 +14,7 @@ public class EventCardController {
     @Autowired
     private EventCardService eventCardService;
 
+    //找整个list
     @GetMapping
     public ResponseResult<List<EventCard>> findEventCardList(){
         List<EventCard> result = eventCardService.findEventCardList();
@@ -34,5 +35,14 @@ public class EventCardController {
     public ResponseResult<String> deleteEventCardById(@PathVariable Integer id){
         eventCardService.deleteEventCardById(id);
         return ResponseResult.success("Successful delete one EventCard");
+    }
+    @GetMapping(value = "/{id}")
+    public ResponseResult<EventCard> findOneMessageCardById(@PathVariable Integer id){
+        return ResponseResult.success(eventCardService.findEventCardById(id));
+    }
+    @GetMapping(value = "/list")
+    public ResponseResult<List<Integer>> findEventCardIdList(){
+        List<Integer> result = eventCardService.findEventIdList();
+        return ResponseResult.success(result);
     }
 }

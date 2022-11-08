@@ -1,13 +1,16 @@
 package com.demo.demokslm.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.demo.demokslm.dao.MessageDao;
+import com.demo.demokslm.pojo.EventCard;
 import com.demo.demokslm.pojo.MessageCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MessageCardServiceImpl implements MessageCardService{
@@ -30,14 +33,20 @@ public class MessageCardServiceImpl implements MessageCardService{
     }
 
     @Override
-    public List<MessageCard> findMessageCardList(Integer userId) {
-        return messageDao.selectList(new QueryWrapper<MessageCard>()
+    public List<Integer> findMessageCardIdList(Integer userId) {
+        List<MessageCard> dataList = messageDao.selectList(new QueryWrapper<MessageCard>()
                 .like("receiverId",userId)
         );
+        List<Integer> result = new ArrayList<>();
+        for (MessageCard messageCard:dataList) {
+            result.add(messageCard.getMessageId());
+        }
+        return result;
     }
 
     @Override
     public MessageCard findMessageCardById(Integer id) {
         return messageDao.selectById(id);
     }
+
 }

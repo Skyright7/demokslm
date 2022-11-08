@@ -12,7 +12,8 @@ public interface MessageCardService {
     //改
     void updateMessageCard(MessageCard messageCard);
     //查本用户的所有message
-    List<MessageCard> findMessageCardList(Integer userId);
+    List<Integer> findMessageCardIdList(Integer userId);
     //查
     MessageCard findMessageCardById(Integer id);
+    //查id_list
 }

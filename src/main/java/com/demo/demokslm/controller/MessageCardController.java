@@ -1,6 +1,5 @@
 package com.demo.demokslm.controller;
 
-import com.demo.demokslm.pojo.EventCard;
 import com.demo.demokslm.pojo.MessageCard;
 import com.demo.demokslm.pojo.ResponseResult;
 import com.demo.demokslm.service.MessageCardService;
@@ -16,8 +15,8 @@ public class MessageCardController {
     private MessageCardService messageCardService;
 
     @GetMapping(value = "/list/{id}") //这里是通过userID联级查找
-    public ResponseResult<List<MessageCard>> findMyMessageCardList(@PathVariable Integer id){
-        List<MessageCard> result = messageCardService.findMessageCardList(id);
+    public ResponseResult<List<Integer>> findMyMessageCardList(@PathVariable Integer id){
+        List<Integer> result = messageCardService.findMessageCardIdList(id);
         return ResponseResult.success(result);
     }
     @GetMapping(value = "/{id}")
@@ -42,4 +41,5 @@ public class MessageCardController {
         messageCardService.deleteMessageCardById(id);
         return ResponseResult.success("Successful delete one MessageCard");
     }
+
 }

@@ -15,4 +15,6 @@ public interface EventCardService {
     List<EventCard> findEventCardList();
     //查
     EventCard findEventCardById(Integer id);
+    //查找event的id_list
+    List<Integer> findEventIdList();
 }
