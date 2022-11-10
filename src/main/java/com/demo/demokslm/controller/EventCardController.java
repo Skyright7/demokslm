@@ -37,7 +37,7 @@ public class EventCardController {
         return ResponseResult.success("Successful delete one EventCard");
     }
     @GetMapping(value = "/{id}")
-    public ResponseResult<EventCard> findOneMessageCardById(@PathVariable Integer id){
+    public ResponseResult<EventCard> findOneEventCardById(@PathVariable Integer id){
         return ResponseResult.success(eventCardService.findEventCardById(id));
     }
     @GetMapping(value = "/list")
