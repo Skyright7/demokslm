@@ -27,27 +27,71 @@ public class BookingASeatServiceTest {
 
     @Test
     void TestStepOneResult(){
+        //f4的数据仅做测试使用
+        //测试数据1
+        Seat seat01 = new Seat();
+        seat01.setSeatId(999);
+        seat01.setSeatType(1);
+        seat01.setSeatAvailableTime("9-23");
+        seat01.setSeatOccupancy(1);
+        seat01.setSeatPosition("f4-d1");
+        seatDao.insert(seat01);
+        //测试数据2
+        Seat seat02 = new Seat();
+        seat02.setSeatId(1000);
+        seat02.setSeatType(2);
+        seat02.setSeatAvailableTime("9-23");
+        seat02.setSeatOccupancy(1);
+        seat02.setSeatPosition("f4-d2");
+        seatDao.insert(seat02);
+        //测试数据3
+        Seat seat03 = new Seat();
+        seat03.setSeatId(1001);
+        seat03.setSeatType(1);
+        seat03.setSeatAvailableTime("12-23");
+        seat03.setSeatOccupancy(1);
+        seat03.setSeatPosition("f4-d1");
+        seatDao.insert(seat03);
         StepOneBookingForm stepOneBookingForm = new StepOneBookingForm();
-        stepOneBookingForm.setPreferredArea("d5");
-        stepOneBookingForm.setPreferredFloor("f3");
-        stepOneBookingForm.setArrivingTime(10);
+        stepOneBookingForm.setPreferredArea("");
+        stepOneBookingForm.setPreferredFloor("f4");
+        stepOneBookingForm.setArrivingTime(11);
         List<Seat> seatList = bookingASeatService.StepOneResult(stepOneBookingForm);
         Seat seat = seatList.get(0);
         assert(seat.getSeatType() == 1);
-        assert(seat.getSeatId() == 1);
+        assert(seat.getSeatId() == 999);
         assert(seat.getSeatOccupancy() == 1);
-        assert(seat.getSeatPosition().equals("f3-d5"));
+        assert(seat.getSeatPosition().equals("f4-d1"));
         assert(seat.getSeatAvailableTime().equals("9-23"));
         Seat seat1 = seatList.get(1);
-        assert(seat1.getSeatId() == 6);
+        assert(seat1.getSeatId() == 1000);
+
+        //删除测试数据
+        seatDao.deleteById(999);
+        seatDao.deleteById(1000);
+        seatDao.deleteById(1001);
     }
 
     @Test
     void TestStepTwoResult(){
-        Seat seat = bookingASeatService.StepTwoResult(1);
+        //测试数据
+        Seat seat01 = new Seat();
+        seat01.setSeatId(999);
+        seat01.setSeatType(1);
+        seat01.setSeatAvailableTime("9-23");
+        seat01.setSeatOccupancy(1);
+        seat01.setSeatPosition("f4-d1");
+        seatDao.insert(seat01);
+
+        Seat seat = bookingASeatService.StepTwoResult(999);
         assert(seat.getSeatType() == 1);
+        assert(seat.getSeatId() == 999);
         assert(seat.getSeatOccupancy() == 1);
-        assert(seat.getSeatId() == 1);
+        assert(seat.getSeatPosition().equals("f4-d1"));
+        assert(seat.getSeatAvailableTime().equals("9-23"));
+
+        //删除测试数据
+        seatDao.deleteById(999);
     }
 
     @Test

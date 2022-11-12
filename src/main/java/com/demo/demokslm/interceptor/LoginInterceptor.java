@@ -1,28 +1,13 @@
 package com.demo.demokslm.interceptor;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.demo.demokslm.dao.TokenDao;
-import com.demo.demokslm.pojo.Token;
-import com.demo.demokslm.sequrity.RsaUtils;
-import com.demo.demokslm.service.LoginServiceImpl;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
-import java.security.KeyPair;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.util.Date;
 
 /**
  * @author Gengyu Liu(xmulgy@126.com)

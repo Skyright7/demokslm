@@ -21,6 +21,6 @@ public class LoginServiceTest {
         loginForm.setUserCaseId("gxl405");
         loginForm.setUserPassword("123");
         String token = loginService.loginToGetToken(loginForm);
-        System.out.println(token);
+        assert(!token.isEmpty());
     }
 }
