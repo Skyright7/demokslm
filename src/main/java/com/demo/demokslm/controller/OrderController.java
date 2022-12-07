@@ -6,6 +6,8 @@ import com.demo.demokslm.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -40,5 +42,11 @@ public class OrderController {
     @GetMapping(value = "/{userId}/{itemId}")
     public ResponseResult<Order> findOrderByQrcode(@PathVariable Integer userId,@PathVariable Integer itemId){
         return ResponseResult.success(orderService.findOrderByQrcode(userId, itemId));
+    }
+
+    @GetMapping(value = "/list/{userId}")
+    public ResponseResult<List<Integer>> findOrderIdList(@PathVariable Integer userId){
+        List<Integer> result = orderService.findOrderIdList(userId);
+        return ResponseResult.success(result);
     }
 }

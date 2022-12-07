@@ -3,6 +3,8 @@ package com.demo.demokslm.service;
 
 import com.demo.demokslm.pojo.Order;
 
+import java.util.List;
+
 public interface OrderService {
     //查询
     Order findOrderById(Integer id);
@@ -15,4 +17,6 @@ public interface OrderService {
 
     //Qrcode 查询order
     Order findOrderByQrcode(Integer customId, Integer userItemId);
+
+    List<Integer> findOrderIdList(Integer userId);
 }
