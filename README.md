@@ -2,6 +2,8 @@
 a restful demo of kslm
 use mybatis plus, springboot, knife4j, mysql, lombok to build a restful demo of our project backend part
 
+Please install mysql. And also change the database setting in resources/appication.yml to your own database name, and connection username and password.
+
 3 table's sql
 ```sql
 create table user(
@@ -45,18 +47,6 @@ create table orders(
 ```
 
 
-有一个重要的点：想办法限制一下，order中具有相同customId、orderItemId跟orderStatus的只能有一个量。
-
-简化一下数据库的命名。稍微修改一下数据库的数据类型。
-
-登录还是自己做吧：需要加一个token的表，user的表还需要进行一定的改动（预计使用jjwt来做）。
-
-user表中的密码做一下加密。
-
-token库： id（自生成）（big int） userId（big int） buildTime（int 11） token（string）
-
-准备开发一下前端部分
-
 ```sql
 create table if not exists token(
     id int not null auto_increment,
@@ -66,19 +56,8 @@ create table if not exists token(
     primary key(id)
 )
 ```
-Token的数据表
+Token table sql
 
-
-
-{
-"userCaseId":"gxl405",
-"userPassword":"123"
-}
-
-Zpu3wJwXV4VQWrHcXV3ggzmjao8ni1QejZ6LJImJV/k=
-
-做一下返回接口的封装，然后通过状态码做一下controller返回的异常处理
-做一下标准的参数校验（注解方式 starter validation）
 
 ```sql
 create table if not exists swiper(
@@ -87,7 +66,7 @@ create table if not exists swiper(
         primary key(swiperId)
 )
 ```
-swiper的表
+swiper table sql
 
 ```sql
 create table message(
@@ -102,7 +81,7 @@ create table message(
         primary key(messageId)
 )
 ```
-message的表
+message table sql
 
 ```sql
 create table event(
@@ -115,4 +94,11 @@ create table event(
         primary key(eventId)
 )
 ```
-event的表
+event table sql
+
+
+Then please add some data in use table(id=1 are needed), and some data in seat table.
+
+Also, the please use the pom.xml file to load the module of the project.
+
+After you successful set up the project, you want see the full Api of the backend. We also setup the Api documentation. After launch the backend service, please use http://localhost:8080/doc.html#/home to access the documentation.
